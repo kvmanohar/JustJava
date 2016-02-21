@@ -3,9 +3,8 @@ package com.example.manohar_kurapati.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
-
-import java.text.NumberFormat;
 
 
 /**
@@ -25,26 +24,27 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage="Total Value : £" + (quantity * 5);
-        displayMessage(priceMessage);
-        //display(quantity);
-        //displayPrice(quantity * 5);
+
+        int creamAmount = 0;
+        CheckBox checkBoxWhipCream = (CheckBox) findViewById(R.id.whipping_cream_checkbox);
+        if (checkBoxWhipCream.isChecked())
+            creamAmount = 5;
+
+        int totalAmount = (quantity * 5 ) + creamAmount;
+
+        String summaryMessage = "Name : Manohar Kurapati";
+        summaryMessage = summaryMessage + "\nQuantity : " + quantity;
+        summaryMessage = summaryMessage + "\nTotal : £ " + totalAmount;
+        summaryMessage = summaryMessage + "\n Thank you!";
+
+        displayMessage(summaryMessage);
     }
 
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+    public void displayMessage(String message) {
+        TextView summaryTextView = (TextView) findViewById(R.id.summary_text_view);
+        summaryTextView.setText(message);
     }
 
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-
-    }
 
     /**
      * This method is called when the + button is clicked.
@@ -60,12 +60,16 @@ public class MainActivity extends AppCompatActivity {
     public void decrementQuantity(View view) {
         quantity = quantity - 1;
         display(quantity);
-
     }
 
-    public void displayMessage(String message){
-        TextView priceTextView=(TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
-
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void display(int number) {
+        TextView quantityTextView = (TextView) findViewById(
+                R.id.quantity_text_view);
+        quantityTextView.setText("" + number);
     }
+
+
 }
