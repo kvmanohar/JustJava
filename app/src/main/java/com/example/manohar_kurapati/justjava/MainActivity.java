@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     public String calculatePrice(int quantity, int creamAmount, int chocAmount){
 
         EditText nameField = (EditText) findViewById(R.id.name_field);
-        String summaryMessage = "Name : " + nameField.getText();
+        String summaryMessage = "Name : " + nameField.getText().toString();
 
         int totalAmount = (quantity * 5 ) + creamAmount + chocAmount;
         summaryMessage = summaryMessage + "\nQuantity : " + quantity;
