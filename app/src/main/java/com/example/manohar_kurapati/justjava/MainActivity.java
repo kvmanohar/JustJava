@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -82,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public String calculatePrice(int quantity, int creamAmount, int chocAmount){
 
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        String summaryMessage = "Name : " + nameField.getText();
+
         int totalAmount = (quantity * 5 ) + creamAmount + chocAmount;
-        String summaryMessage = "Name : Manohar Kurapati";
         summaryMessage = summaryMessage + "\nQuantity : " + quantity;
         summaryMessage = summaryMessage + "\nTotal : £ " + totalAmount;
         summaryMessage = summaryMessage + "\n";

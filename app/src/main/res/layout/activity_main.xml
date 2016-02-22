@@ -12,6 +12,13 @@
         android:orientation="vertical"
         android:padding="16dp" >
 
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name"
+            android:inputType="text"
+            android:textColor="#9E9E9E"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
