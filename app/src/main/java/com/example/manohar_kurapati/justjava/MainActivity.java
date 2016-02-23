@@ -1,5 +1,7 @@
 package com.example.manohar_kurapati.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         int creamAmount = 0;
         int chocAmount = 0;
+        String name;
         String orderSummary;
 
         CheckBox checkBoxWhipCream = (CheckBox) findViewById(R.id.whipping_cream_checkbox);
@@ -36,18 +39,35 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkBoxChocolate = (CheckBox) findViewById(R.id.add_chocolate_checkbox);
         if (checkBoxChocolate.isChecked())  chocAmount = 2;
 
-        orderSummary=calculatePrice(quantity,creamAmount,chocAmount);
-        displayMessage(orderSummary);
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        name = nameField.getText().toString();
+
+        if (name.length() == 0){
+            Toast.makeText(this,"Enter name to continue",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        orderSummary=calculatePrice(quantity,creamAmount,chocAmount,name);
+//        displayMessage(orderSummary);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:sheetalkurapati@gmail.com")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just JAVA Order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT,orderSummary);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
-    /**
-     * This method will display message on the Order summary text view
-     * @param message final message to be displayed
-     */
-    public void displayMessage(String message) {
-        TextView summaryTextView = (TextView) findViewById(R.id.summary_text_view);
-        summaryTextView.setText(message);
-    }
+//    /**
+//     * This method will display message on the Order summary text view
+//     * @param message final message to be displayed
+//     */
+//    public void displayMessage(String message) {
+//        TextView summaryTextView = (TextView) findViewById(R.id.summary_text_view);
+//        summaryTextView.setText(message);
+//    }
 
 
     /**
@@ -90,10 +110,9 @@ public class MainActivity extends AppCompatActivity {
      * @param chocAmount Chocolate amount if selected by user
      * @return String
      */
-    public String calculatePrice(int quantity, int creamAmount, int chocAmount){
+    public String calculatePrice(int quantity, int creamAmount, int chocAmount, String name){
 
-        EditText nameField = (EditText) findViewById(R.id.name_field);
-        String summaryMessage = "Name : " + nameField.getText().toString();
+        String summaryMessage = "Name : " + name;
 
         int totalAmount = (quantity * 5 ) + creamAmount + chocAmount;
         summaryMessage = summaryMessage + "\nQuantity : " + quantity;
