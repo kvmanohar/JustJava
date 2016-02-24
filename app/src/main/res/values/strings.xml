@@ -1,9 +1,43 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Title of the application [CHAR LIMIT=12]-->
     <string name="app_name">Just Java</string>
+    <!-- String to inform the user to enter their name. [CHAR LIMIT=NONE] -->
     <string name="enter_your_name">Enter your name</string>
+
+    <!-- Text that goes in the Toppings heading. [CHAR LIMIT=NONE] -->
     <string name="toppings_text">Toppings</string>
+
+    <!-- Text for Whipping Cream checkbox [CHAR LIMIT=NONE] -->
     <string name="whipping_cream_text">Whipping Cream</string>
+    <!-- Text for Chocolate checkbox [CHAR LIMIT=NONE]-->
     <string name="add_chocolate_text">Add Chocolate</string>
+
+    <!-- String that goes on the Quality Label heading [CHAR LIMIT=NONE]-->
     <string name="quantity_text">Quantity</string>
+
+    <!-- String that goes on Order Button [CHAR LIMIT=10]-->
     <string name="order_text">Order</string>
+
+    <!-- Name of the order summary. It will be in the format of "Name : Manohar" where Manohar is
+    the user name. [CHAR LIMIT=NONE]-->
+    <string name="order_summary_name">Name : <xliff:g id="name">%s</xliff:g></string>
+
+    <!-- Quantity text Quatity=2 where 2 is the number of cups ordered [CHAR LIMIT=NONE] -->
+    <string name="order_summary_quantity">Quantity : <xliff:g id="quantity" example="2">%d</xliff:g></string>
+
+    <!-- Total price for the order summary. It will be shown in the format of "Total : £10" where £10 is the price. [CHAR LIMIT=NONE]-->
+    <string name="order_summary_total">Total : <xliff:g id="total" example="£10">%s</xliff:g></string>
+
+    <!-- If Whipped cream selected display the order summary with Whipped cream amount eg: Whipped Cream : £5 where £5 is the amount of Whipped cream-->
+    <string name="order_summary_whipped">Whipped Cream : <xliff:g id="whipped_cream" example="£5">%s</xliff:g></string>
+
+    <!-- If Chocolate added to the order display the order summary with Chocolate cream amount eg: Chocolate Cream : £2 where £2 is the amount for Chocolate-->
+    <string name="order_summary_chocolate">Chocolate : <xliff:g id="chocolate" example="£2">%s</xliff:g></string>
+
+    <!-- Text that displays Thank you in the Order summary-->
+    <string name="order_summary_thankyou">Thank you!</string>
+
+    <!-- Display quantity on the screen  example = "2"-->
+    <string name="display_quantity"><xliff:g id="quantity" example="2">%d</xliff:g></string>
+
 </resources>
